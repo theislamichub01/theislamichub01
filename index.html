@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Hub - Your Gateway to Islamic Knowledge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Magical Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                #1a4d2e 0%, 
+                #2d5f3f 15%, 
+                #4a7c59 30%, 
+                #6b9c7d 45%, 
+                #8bbca0 60%, 
+                #abddc4 75%, 
+                #cbffe8 90%, 
+                #e8fff5 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Islamic Geometric Pattern Overlay */
+        .pattern-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 50% 20%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 50% 80%, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
+            background-position: 0 0, 50px 50px, 25px 0, 75px 50px;
+            animation: patternMove 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes patternMove {
+            0% { background-position: 0 0, 50px 50px, 25px 0, 75px 50px; }
+            100% { background-position: 100px 100px, 150px 150px, 125px 100px, 175px 150px; }
+        }
+
+        /* Floating Islamic Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .float-icon {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.2;
+            animation: floatAround 25s infinite ease-in-out;
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -40px) rotate(90deg); }
+            50% { transform: translate(-20px, -80px) rotate(180deg); }
+            75% { transform: translate(-40px, -40px) rotate(270deg); }
+        }
+
+        .float-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .float-icon:nth-child(2) { top: 20%; left: 85%; animation-delay: 3s; }
+        .float-icon:nth-child(3) { top: 60%; left: 15%; animation-delay: 6s; }
+        .float-icon:nth-child(4) { top: 75%; left: 80%; animation-delay: 9s; }
+        .float-icon:nth-child(5) { top: 40%; left: 50%; animation-delay: 12s; }
+        .float-icon:nth-child(6) { top: 85%; left: 40%; animation-delay: 15s; }
+
+        /* Header and Navigation */
+        header {
+            background: rgba(26, 77, 46, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid rgba(255,255,255,0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.3); }
+            50% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 40px rgba(255,255,255,0.6); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #90EE90;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #90EE90;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - The WOW Factor */
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            margin: 3rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '☪';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.08;
+            top: -80px;
+            right: -80px;
+            animation: rotateSlow 40s linear infinite;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.4);
+            animation: fadeInDown 1.2s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #e0ffe0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            animation: fadeInUp 1.2s ease 0.3s both;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            animation: fadeInUp 1.2s ease 0.6s both;
+            opacity: 0.95;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-bismillah {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Times New Roman', serif;
+            animation: fadeIn 1.5s ease 0.9s both;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1300px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInScale 1s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: cardSlideUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes cardSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(26, 77, 46, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(26, 77, 46, 0.4);
+            border-color: rgba(26, 77, 46, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: iconBounce 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: iconSpin 0.6s ease;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
+        .feature-card h3 {
+            color: #1a4d2e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .feature-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.9rem 2.2rem;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5f3f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(26, 77, 46, 0.4);
+            font-weight: 500;
+        }
+
+        .feature-card a:hover {
+            background: linear-gradient(135deg, #2d5f3f 0%, #1a4d2e 100%);
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(26, 77, 46, 0.6);
+        }
+
+        /* Beautiful Quote Section */
+        .quote-section {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .quote-section blockquote {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            line-height: 1.8;
+        }
+
+        .quote-section cite {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 77, 46, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .footer-heart {
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-bismillah {
+                font-size: 1.8rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features h2 {
+                font-size: 2rem;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="pattern-overlay"></div>
+    
+    <!-- Floating Islamic Elements -->
+    <div class="floating-elements">
+        <div class="float-icon">☪</div>
+        <div class="float-icon">🕌</div>
+        <div class="float-icon">⭐</div>
+        <div class="float-icon">🌙</div>
+        <div class="float-icon">✨</div>
+        <div class="float-icon">🤲</div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">☪ Islamic Hub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prayer-tools.html">Prayer Tools</a></li>
+                <li><a href="daily-hadith.html">Daily Hadith</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+        <h1>🕌 Welcome to Islamic Hub</h1>
+        <p class="tagline">Your Comprehensive Gateway to Islamic Knowledge</p>
+        <p class="subtitle">Explore authentic resources to strengthen your faith and daily practice</p>
+    </section>
+
+    <section class="quote-section">
+        <blockquote>
+            "The best of you are those who learn the Quran and teach it"
+        </blockquote>
+        <cite>- Prophet Muhammad ﷺ (Sahih Bukhari)</cite>
+    </section>
+
+    <section class="features">
+        <h2>✨ Our Islamic Resources</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🕌</div>
+                <h3>Prayer Times</h3>
+                <p>Accurate prayer times based on your location with automatic calculations for all five daily prayers</p>
+                <a href="prayer-tools.html">View Prayer Times</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧭</div>
+                <h3>Qibla Finder</h3>
+                <p>Find the exact direction of Qibla from anywhere in the world using your device's location</p>
+                <a href="prayer-tools.html">Find Qibla</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Daily Hadith</h3>
+                <p>Authentic Hadith from Sahih Bukhari & Muslim with English translations and references</p>
+                <a href="daily-hadith.html">Read Today's Hadith</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Islamic Calendar</h3>
+                <p>View Hijri dates, convert between Gregorian and Islamic dates, and track important occasions</p>
+                <a href="calendar.html">View Calendar</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Zakat Calculator</h3>
+                <p>Calculate your Zakat obligations accurately with our comprehensive calculator tool</p>
+                <a href="resources.html">Calculate Zakat</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                <h3>Kids Corner</h3>
+                <p>Islamic stories, activities, and educational content for children to learn about Islam</p>
+                <a href="#">Coming Soon</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Community</h3>
+                <p>Connect with fellow Muslims, join study circles, and participate in discussions</p>
+                <a href="#">Coming Soon</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Halal Games</h3>
+                <p>Educational and entertaining Islamic games for all ages to learn while having fun</p>
+                <a href="#">Coming Soon</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Islamic Hub. All rights reserved.</p>
+        <p>Made with <span class="footer-heart">❤️</span> for the Muslim Ummah</p>
+        <p>May Allah guide us all on the straight path 🤲</p>
+    </footer>
+</body>
+</html>
