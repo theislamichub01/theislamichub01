@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Games - Islamic Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section p {
+            color: #666;
+            line-height: 1.9;
+            font-size: 1.2rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+
+        .game-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .game-title {
+            color: #667eea;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .game-description {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-badge {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%);
+        }
+
+        .game-area {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .game-area h3 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 3px solid #4caf50;
+        }
+
+        .quiz-question h4 {
+            color: #2e7d32;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            background: white;
+            border: 3px solid #4caf50;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            background: #4caf50;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .quiz-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .correct {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .incorrect {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+
+        .score-board {
+            background: linear-gradient(135deg, #ffd89b 0%, #ffc371 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 3px solid #ff9f43;
+        }
+
+        .score-board h4 {
+            color: #e65100;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-text {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            margin: 1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        footer {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 968px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            .nav-links.active { display: flex; }
+            .page-title { font-size: 2.5rem; }
+            .games-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <header>
+        <nav>
+            <div class="nav-top">
+                <div class="logo">☪ Islamic Hub</div>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="prayer-tools.html">🕌 Prayer</a></li>
+                <li><a href="quran.html">📕 Quran</a></li>
+                <li><a href="daily-hadith.html">📖 Hadith</a></li>
+                <li><a href="ayah-of-the-day.html">🌟 Ayah</a></li>
+                <li><a href="dua-of-the-day.html">🤲 Dua</a></li>
+                <li><a href="calendar.html">📅 Calendar</a></li>
+                <li><a href="zakat-calculator.html">💰 Zakat</a></li>
+                <li><a href="kids-stories.html">👶 Kids</a></li>
+                <li><a href="dawah.html">📢 Dawah</a></li>
+                <li><a href="community.html">💬 Community</a></li>
+                <li><a href="halal-games.html">🎮 Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">🎮 Halal Islamic Games</h1>
+
+        <div class="intro-section">
+            <h2>Learn Islam While Having Fun! 🌟</h2>
+            <p>
+                Play educational games that teach Islamic knowledge in a fun and engaging way. 
+                Perfect for all ages - from kids to adults!
+            </p>
+        </div>
+
+        <div id="gamesMenu">
+            <div class="games-grid">
+                <div class="game-card" onclick="startQuiz()">
+                    <div class="game-icon">📚</div>
+                    <div class="game-title">Islamic Quiz</div>
+                    <div class="game-description">
+                        Test your knowledge about Islam, Prophets, Quran, and Islamic history. 
+                        Learn new facts with every question!
+                    </div>
+                    <div class="game-badge">Play Now!</div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon">🕌</div>
+                    <div class="game-title">Mosque Builder</div>
+                    <div class="game-description">
+                        Build and design your own beautiful mosque. Learn about Islamic architecture 
+                        and the importance of the masjid.
+                    </div>
+                    <div class="game-badge coming-soon">Coming Soon</div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon">📖</div>
+                    <div class="game-title">Quran Memory</div>
+                    <div class="game-description">
+                        Match pairs of Quranic verses with their translations. Improve your memory 
+                        while learning the Quran!
+                    </div>
+                    <div class="game-badge coming-soon">Coming Soon</div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon">🌙</div>
+                    <div class="game-title">Ramadan Adventure</div>
+                    <div class="game-description">
+                        Go on a virtual Ramadan journey. Learn about fasting, night prayers, 
+                        and the blessings of this holy month.
+                    </div>
+                    <div class="game-badge coming-soon">Coming Soon</div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon">🐪</div>
+                    <div class="game-title">Hajj Journey</div>
+                    <div class="game-description">
+                        Experience the pilgrimage to Makkah virtually. Learn all the steps of Hajj 
+                        in an interactive way.
+                    </div>
+                    <div class="game-badge coming-soon">Coming Soon</div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon">⭐</div>
+                    <div class="game-title">Prophets Quest</div>
+                    <div class="game-description">
+                        Explore the stories of all Prophets mentioned in the Quran through an 
+                        exciting adventure game.
+                    </div>
+                    <div class="game-badge coming-soon">Coming Soon</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizGame" class="game-area hidden">
+            <h3>📚 Islamic Knowledge Quiz</h3>
+            <div id="quizContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Islamic Hub. All rights reserved.</p>
+        <p>Learning Islam through fun and games! 🎮</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        const quizQuestions = [
+            {
+                question: "How many pillars of Islam are there?",
+                options: ["3", "5", "7", "10"],
+                correct: 1,
+                explanation: "The Five Pillars of Islam are: Shahada, Salah, Zakat, Sawm, and Hajj."
+            },
+            {
+                question: "Who was the first Prophet in Islam?",
+                options: ["Prophet Muhammad ﷺ", "Prophet Ibrahim (AS)", "Prophet Adam (AS)", "Prophet Musa (AS)"],
+                correct: 2,
+                explanation: "Prophet Adam (AS) was the first human and the first Prophet created by Allah."
+            },
+            {
+                question: "How many times a day do Muslims pray?",
+                options: ["3 times", "5 times", "7 times", "10 times"],
+                correct: 1,
+                explanation: "Muslims pray 5 times daily: Fajr, Dhuhr, Asr, Maghrib, and Isha."
+            },
+            {
+                question: "In which month do Muslims fast?",
+                options: ["Muharram", "Rajab", "Ramadan", "Shawwal"],
+                correct: 2,
+                explanation: "Muslims fast during the entire month of Ramadan, the 9th month of the Islamic calendar."
+            },
+            {
+                question: "What is the holy book of Islam?",
+                options: ["Torah", "Bible", "Quran", "Zabur"],
+                correct: 2,
+                explanation: "The Quran is the holy book of Islam, revealed by Allah to Prophet Muhammad ﷺ."
+            },
+            {
+                question: "Where was Prophet Muhammad ﷺ born?",
+                options: ["Madinah", "Makkah", "Jerusalem", "Damascus"],
+                correct: 1,
+                explanation: "Prophet Muhammad ﷺ was born in Makkah in the year 570 CE."
+            },
+            {
+                question: "What does 'Islam' mean?",
+                options: ["Peace", "Submission to Allah", "Prayer", "Charity"],
+                correct: 1,
+                explanation: "Islam means 'submission to the will of Allah' and also brings peace."
+            },
+            {
+                question: "How many Surahs (chapters) are in the Quran?",
+                options: ["100", "114", "120", "99"],
+                correct: 1,
+                explanation: "The Quran has 114 Surahs, from Al-Fatihah to An-Nas."
+            },
+            {
+                question: "What is the direction Muslims face when praying?",
+                options: ["North", "East", "Towards the Kaaba", "Towards the sun"],
+                correct: 2,
+                explanation: "Muslims face the Kaaba in Makkah when praying, which is called the Qibla."
+            },
+            {
+                question: "What percentage of wealth is given as Zakat?",
+                options: ["1%", "2.5%", "5%", "10%"],
+                correct: 1,
+                explanation: "Zakat is 2.5% of one's wealth, given annually to help the poor and needy."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+            document.getElementById('gamesMenu').classList.add('hidden');
+            document.getElementById('quizGame').classList.remove('hidden');
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = quizQuestions[currentQuestion];
+            const content = document.getElementById('quizContent');
+            
+            content.innerHTML = `
+                <div class="quiz-question">
+                    <h4>Question ${currentQuestion + 1} of ${quizQuestions.length}</h4>
+                    <h4 style="margin-top: 1rem;">${question.question}</h4>
+                    <div class="quiz-options" id="quizOptions">
+                        ${question.options.map((option, index) => `
+                            <div class="quiz-option" onclick="checkAnswer(${index})">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="quizResult"></div>
+                </div>
+                
+                <div class="score-board">
+                    <h4>Your Score</h4>
+                    <div class="score-text">${score} / ${currentQuestion}</div>
+                </div>
+            `;
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const question = quizQuestions[currentQuestion];
+            const resultDiv = document.getElementById('quizResult');
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options.forEach(opt => opt.style.pointerEvents = 'none');
+            
+            if (selectedIndex === question.correct) {
+                score++;
+                resultDiv.innerHTML = `
+                    <div class="quiz-result correct">
+                        ✅ Correct! ${question.explanation}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="quiz-result incorrect">
+                        ❌ Incorrect. ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            if (currentQuestion < quizQuestions.length - 1) {
+                resultDiv.innerHTML += `<button class="btn" onclick="nextQuestion()">Next Question →</button>`;
+            } else {
+                resultDiv.innerHTML += `<button class="btn" onclick="showFinalScore()">See Final Score 🏆</button>`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            answered = false;
+            displayQuestion();
+        }
+
+        function showFinalScore() {
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let message = '';
+            
+            if (percentage >= 90) {
+                message = "🌟 MASHALLAH! You're an Islamic scholar!";
+            } else if (percentage >= 70) {
+                message = "👏 Great job! You have excellent Islamic knowledge!";
+            } else if (percentage >= 50) {
+                message = "😊 Good effort! Keep learning more about Islam!";
+            } else {
+                message = "📚 Keep studying! There's always more to learn!";
+            }
+            
+            const content = document.getElementById('quizContent');
+            content.innerHTML = `
+                <div class="score-board" style="padding: 3rem;">
+                    <h4>🏆 Quiz Complete!</h4>
+                    <div class="score-text" style="margin: 2rem 0; font-size: 3rem;">
+                        ${score} / ${quizQuestions.length}
+                    </div>
+                    <h4 style="color: #333; margin: 1rem 0;">${percentage}% Correct</h4>
+                    <p style="font-size: 1.5rem; color: #333; margin: 2rem 0;">
+                        ${message}
+                    </p>
+                    <button class="btn" onclick="startQuiz()">🔄 Play Again</button>
+                    <button class="btn" onclick="backToMenu()">← Back to Games</button>
+                </div>
+            `;
+        }
+
+        function backToMenu() {
+            document.getElementById('gamesMenu').classList.remove('hidden');
+            document.getElementById('quizGame').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
