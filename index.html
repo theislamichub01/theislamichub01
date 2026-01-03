@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Magical Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -45,7 +44,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Pattern Overlay */
         .pattern-overlay {
             position: fixed;
             top: 0;
@@ -65,7 +63,6 @@
             100% { background-position: 100px 100px; }
         }
 
-        /* Floating Elements */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -97,7 +94,6 @@
         .float-icon:nth-child(5) { top: 40%; left: 50%; animation-delay: 12s; }
         .float-icon:nth-child(6) { top: 85%; left: 40%; animation-delay: 15s; }
 
-        /* Support Button - Top Right Corner */
         .support-button {
             position: fixed;
             top: 20px;
@@ -132,7 +128,6 @@
             text-align: center;
         }
 
-        /* Support Modal */
         .support-modal {
             display: none;
             position: fixed;
@@ -292,7 +287,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Hero Section */
         .hero {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -357,7 +351,6 @@
             to { opacity: 1; }
         }
 
-        /* Features */
         .features {
             max-width: 1300px;
             margin: 5rem auto;
@@ -437,7 +430,6 @@
             box-shadow: 0 8px 30px rgba(26, 77, 46, 0.6);
         }
 
-        /* Quote Section */
         .quote-section {
             max-width: 900px;
             margin: 5rem auto;
@@ -458,7 +450,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
         }
 
-        /* Footer */
         footer {
             background: rgba(26, 77, 46, 0.95);
             backdrop-filter: blur(15px);
@@ -482,7 +473,6 @@
             25% { transform: scale(1.2); }
         }
 
-        /* Mobile */
         @media (max-width: 968px) {
             .hero h1 { font-size: 2.5rem; }
             .features h2 { font-size: 2rem; }
@@ -524,13 +514,11 @@
         <div class="float-icon">🤲</div>
     </div>
 
-    <!-- Support Button -->
     <div class="support-button" onclick="openSupportModal()">
         <div class="support-button-icon">📧</div>
         <div class="support-button-text">Support</div>
     </div>
 
-    <!-- Support Modal -->
     <div class="support-modal" id="supportModal">
         <div class="support-modal-content">
             <button class="support-modal-close" onclick="closeSupportModal()">×</button>
@@ -542,7 +530,6 @@
                 <button class="support-tab" onclick="switchTab(event, 'contact')">📞 Contact</button>
             </div>
 
-            <!-- Queries Tab -->
             <div class="support-tab-content active" id="queries">
                 <div class="support-form-group">
                     <label>Your Name</label>
@@ -569,7 +556,6 @@
                 <button class="support-submit-btn" onclick="submitQuery()">Submit Query</button>
             </div>
 
-            <!-- Complaints Tab -->
             <div class="support-tab-content" id="complaints">
                 <div class="support-form-group">
                     <label>Your Name</label>
@@ -596,37 +582,33 @@
                 <button class="support-submit-btn" onclick="submitComplaint()">Submit Complaint</button>
             </div>
 
-            <!-- Contact Tab -->
             <div class="support-tab-content" id="contact">
                 <div class="support-contact-info">
                     <h4>📧 Email Us</h4>
-                    <p><strong>General Inquiries:</strong> info@islamichub.com</p>
-                    <p><strong>Support:</strong> support@islamichub.com</p>
-                    <p><strong>Partnerships:</strong> partnerships@islamichub.com</p>
+                    <p><strong>Queries & Support:</strong> lutrumputrumss@gmail.com</p>
                 </div>
 
                 <div class="support-contact-info">
                     <h4>🌐 Follow Us</h4>
-                    <p><strong>Facebook:</strong> @IslamicHub</p>
-                    <p><strong>Twitter:</strong> @Islamic_Hub</p>
-                    <p><strong>Instagram:</strong> @islamichub</p>
-                    <p><strong>YouTube:</strong> Islamic Hub Official</p>
+                    <p><strong>Instagram:</strong> @theofficial.islamichub</p>
                 </div>
 
                 <div class="support-contact-info">
                     <h4>⏰ Response Time</h4>
                     <p>We typically respond within 24-48 hours.</p>
-                    <p>For urgent matters, please mark your email as "URGENT".</p>
+                    <p>For urgent matters, please email us directly.</p>
                 </div>
 
                 <div class="support-form-group">
-                    <label>Quick Message</label>
+                    <label>Your Name</label>
                     <input type="text" id="contactName" placeholder="Your name">
                 </div>
                 <div class="support-form-group">
+                    <label>Email Address</label>
                     <input type="email" id="contactEmail" placeholder="Your email">
                 </div>
                 <div class="support-form-group">
+                    <label>Message</label>
                     <textarea id="contactMessage" placeholder="Your message..."></textarea>
                 </div>
                 <button class="support-submit-btn" onclick="submitContact()">Send Message</button>
@@ -743,7 +725,6 @@
         }
 
         function switchTab(event, tabName) {
-            // Hide all tabs
             document.querySelectorAll('.support-tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -751,7 +732,6 @@
                 btn.classList.remove('active');
             });
 
-            // Show selected tab
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
         }
@@ -767,13 +747,10 @@
                 return;
             }
 
-            alert('✅ Thank you! Your query has been submitted. We will respond within 24-48 hours insha\'Allah.');
+            const mailtoLink = `mailto:lutrumputrumss@gmail.com?subject=Query: ${type}&body=Name: ${name}%0AEmail: ${email}%0A%0AQuery:%0A${message}`;
+            window.location.href = mailtoLink;
             
-            // Clear form
-            document.getElementById('queryName').value = '';
-            document.getElementById('queryEmail').value = '';
-            document.getElementById('queryMessage').value = '';
-            
+            alert('✅ Opening your email app! Please send the email.');
             closeSupportModal();
         }
 
@@ -788,13 +765,10 @@
                 return;
             }
 
-            alert('✅ Thank you for reporting. We take all complaints seriously and will investigate this matter.');
+            const mailtoLink = `mailto:lutrumputrumss@gmail.com?subject=Complaint: ${type}&body=Name: ${name}%0AEmail: ${email}%0A%0AComplaint:%0A${message}`;
+            window.location.href = mailtoLink;
             
-            // Clear form
-            document.getElementById('complaintName').value = '';
-            document.getElementById('complaintEmail').value = '';
-            document.getElementById('complaintMessage').value = '';
-            
+            alert('✅ Opening your email app! Please send the email.');
             closeSupportModal();
         }
 
@@ -808,17 +782,13 @@
                 return;
             }
 
-            alert('✅ Message sent! We will get back to you soon insha\'Allah.');
+            const mailtoLink = `mailto:lutrumputrumss@gmail.com?subject=Contact Message&body=Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+            window.location.href = mailtoLink;
             
-            // Clear form
-            document.getElementById('contactName').value = '';
-            document.getElementById('contactEmail').value = '';
-            document.getElementById('contactMessage').value = '';
-            
+            alert('✅ Opening your email app! Please send the email.');
             closeSupportModal();
         }
 
-        // Close modal when clicking outside
         document.getElementById('supportModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeSupportModal();
